@@ -48,3 +48,14 @@ ctaImg.src = siteContent["cta"]["img-src"]
 // update the img src for the middle image
 let midImg = document.querySelector("#middle-img");
 midImg.src = siteContent["main-content"]["middle-img-src"];
+
+// create an array of nav anchor links
+const nav = document.querySelectorAll('nav a');
+console.log(nav);
+
+// update the text for each navigation link
+for (let i = 0; i < nav.length; i++) {
+  const contents = Object.values(siteContent.nav);
+  nav[i].textContent = contents[i]; 
+}
+
