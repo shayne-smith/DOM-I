@@ -51,11 +51,46 @@ midImg.src = siteContent["main-content"]["middle-img-src"];
 
 // create an array of nav anchor links
 const nav = document.querySelectorAll('nav a');
-console.log(nav);
 
 // update the text for each navigation link
 for (let i = 0; i < nav.length; i++) {
   const contents = Object.values(siteContent.nav);
   nav[i].textContent = contents[i]; 
 }
+
+// update the cta h1 text
+const cta = document.querySelector('.cta-text h1');
+cta.textContent = siteContent['cta']['h1'];
+
+// update the cta button text
+const ctaButton = document.querySelector('.cta-text button');
+ctaButton.textContent = siteContent['cta']['button'];
+
+// create an array of div elements with .text-content class
+const mainText = document.querySelectorAll('.text-content');
+
+const contents = Object.values(siteContent['main-content']); // create an array to store all the values in the main-content object
+contents.splice(4, 1); // remove the value for img src
+
+
+for (let i = 0; i < mainText.length; i++) { // iterate over array of 5 text-content containers
+  
+  const mainSection = mainText[i].children; // store HTMLCollection of children elements of each mainSection
+
+  mainSection[0].textContent = contents[2 * i]; // update h4 text
+  mainSection[1].textContent = contents[2 * i + 1]; // update p text
+}
+
+const contactText = document.querySelector('.contact').children;
+
+const contactValues = Object.values(siteContent['contact']); // create an array to store all contact values in contact object as HTMLCollection
+
+for (let i = 0; i < contactText.length; i++) {
+  contactText[i].textContent = contactValues[i];
+}
+
+const footerText = document.querySelector('.container footer p');
+console.log(footerText);
+
+footerText.textContent = siteContent["footer"]['copyright'];
 
