@@ -133,7 +133,7 @@ navigation.prepend(link2); // add link2 to beginning of nav
 // create an array to store all anchor links in navigation
 const navColors = document.querySelectorAll('nav a');
 
-// update the color of each anchor link in navigation to red
+// update the color of each anchor link in navigation to green
 for (let i = 0; i < navColors.length; i++) {
   navColors[i].style.color = 'green';
 }
