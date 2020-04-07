@@ -37,6 +37,8 @@ const siteContent = {
   },
 };
 
+// ========================= Update image src info ====================================
+
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
@@ -49,6 +51,8 @@ ctaImg.src = siteContent["cta"]["img-src"]
 let midImg = document.querySelector("#middle-img");
 midImg.src = siteContent["main-content"]["middle-img-src"];
 
+// ========================= Update all nav links in the header =======================
+
 // create an array of nav anchor links
 const nav = document.querySelectorAll('nav a');
 
@@ -58,6 +62,9 @@ for (let i = 0; i < nav.length; i++) {
   nav[i].textContent = contents[i]; 
 }
 
+
+// ========================== Update all CTA text and buttons =========================
+
 // update the cta h1 text
 const cta = document.querySelector('.cta-text h1');
 cta.textContent = siteContent['cta']['h1'];
@@ -66,13 +73,16 @@ cta.textContent = siteContent['cta']['h1'];
 const ctaButton = document.querySelector('.cta-text button');
 ctaButton.textContent = siteContent['cta']['button'];
 
+
+// =========================== Update all main-text content ===========================
+
 // create an array of div elements with .text-content class
 const mainText = document.querySelectorAll('.text-content');
 
 const contents = Object.values(siteContent['main-content']); // create an array to store all the values in the main-content object
 contents.splice(4, 1); // remove the value for img src
 
-
+// update h4 and p elements in main-section text
 for (let i = 0; i < mainText.length; i++) { // iterate over array of 5 text-content containers
   
   const mainSection = mainText[i].children; // store HTMLCollection of children elements of each mainSection
@@ -81,16 +91,52 @@ for (let i = 0; i < mainText.length; i++) { // iterate over array of 5 text-cont
   mainSection[1].textContent = contents[2 * i + 1]; // update p text
 }
 
+
+// ========================== Update contact section =================================
+
+// create an array to store the children of all elements with .contact class
 const contactText = document.querySelector('.contact').children;
 
-const contactValues = Object.values(siteContent['contact']); // create an array to store all contact values in contact object as HTMLCollection
+// create an array to store all contact values in contact object as HTMLCollection
+const contactValues = Object.values(siteContent['contact']);
 
+// iterate over all children elements of .contact class and update each h4 and p value
 for (let i = 0; i < contactText.length; i++) {
   contactText[i].textContent = contactValues[i];
 }
 
-const footerText = document.querySelector('.container footer p');
-console.log(footerText);
 
+// =========================== Update footer section ==================================
+
+// create an variable to store the footer p element
+const footerText = document.querySelector('.container footer p');
+
+// update footer with correct textContent
 footerText.textContent = siteContent["footer"]['copyright'];
+
+
+// =========================== ADD NEW CONTENT =========================================
+
+// create new anchor elements to add to existing navigation
+var link1 = document.createElement('a');
+link1.innerHTML = "Sign In";
+
+var link2 = document.createElement('a');
+link2.innerHTML = "Volunteer";
+
+// create variable to store nav node
+const navigation = document.querySelector('nav');
+
+navigation.appendChild(link1); // add link1 to end of nav
+navigation.prepend(link2); // add link2 to beginning of nav
+
+// create an array to store all anchor links in navigation
+const navColors = document.querySelectorAll('nav a');
+
+// update the color of each anchor link in navigation to red
+for (let i = 0; i < navColors.length; i++) {
+  navColors[i].style.color = 'green';
+}
+
+
 
